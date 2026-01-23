@@ -13,13 +13,13 @@ int initialize_window() {
                 800, 600,
                 0
         ));
-        if (get_window() == NULL) {
+        if (!get_window()) {
                 SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Window creation error.");
                 return 1;
         }
 
         set_renderer(SDL_CreateRenderer(get_window(), NULL));
-        if (get_renderer() == NULL) {
+        if (!get_renderer()) {
                 SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Window renderer error.");
                 return 1;
         }
