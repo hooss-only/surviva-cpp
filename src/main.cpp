@@ -1,18 +1,28 @@
 #include <SDL3/SDL.h>
+#include <iostream>
 #include "game_status.h"
 
 int initialize_window() {
-        if (SDL_Init(SDL_INIT_VIDEO)) return 1;
+        if (!SDL_Init(SDL_INIT_VIDEO)) {
+                std::cout << "SDL_Init error" << std::endl;
+                return 1;
+        }
 
         set_window(SDL_CreateWindow(
                 "Surviva",
                 800, 600,
                 0
         ));
-        if (get_window() == NULL) return 1;
+        if (get_window() == NULL) {
+                std::cout << "Window creation error" << std::endl;
+                return 1;
+        }
 
         set_renderer(SDL_CreateRenderer(get_window(), NULL));
-        if (get_renderer() == NULL) return 1;
+        if (get_renderer() == NULL) {
+                std::cout << "Renderer creation error" << std::endl;
+                return 1;
+        }
 
         return 0;
 }
