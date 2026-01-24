@@ -1,26 +1,14 @@
 #include "dummy_sprite.hpp"
 
-#include "../game_status.hpp"
+#include <memory>
+
 #include "../assets/texture.hpp"
 
 DummySprite::DummySprite() : Sprite() {
-        this->texture = use_texture("assets/apple.png");
-}
-
-DummySprite::~DummySprite() {
-        unuse_texture(this->texture);
+        this->texture = std::make_unique<TextureComponent>();
+        this->texture->set_texture(use_texture("assets/apple.png"));
 }
 
 void DummySprite::update(double dt) {
 
-}
-
-void DummySprite::render() {
-        SDL_FRect dst = {0, 0, 128, 128};
-        SDL_RenderTexture(
-                get_renderer(),
-                this->texture,
-                NULL, 
-                &dst
-        );
 }

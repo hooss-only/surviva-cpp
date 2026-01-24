@@ -4,11 +4,7 @@
 class DummySprite: public Sprite {
         public:
                 DummySprite();
-                ~DummySprite();
+                ~DummySprite() = default;
 
                 void update(double dt) override;
-                void render() override;
-
-        private:
-                SDL_Texture* texture;
 };

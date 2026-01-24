@@ -7,3 +7,4 @@ target_sources(surviva PRIVATE
 
 add_subdirectory(assets)
 add_subdirectory(sprites)
+add_subdirectory(components)

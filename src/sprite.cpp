@@ -5,6 +5,10 @@ Sprite::Sprite() {
         this->should_delete = false;
 }
 
+void Sprite::render() {
+        if (texture) texture->render(this->position);
+};
+
 bool Sprite::get_should_delete() {
         return this->should_delete;
 }

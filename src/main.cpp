@@ -1,4 +1,6 @@
 #include <SDL3/SDL.h>
+#include <SDL3_image/SDL_image.h>
+
 #include "game_status.hpp"
 #include "sprites/dummy_sprite.hpp"
 #include "scene.hpp"
@@ -24,7 +26,7 @@ int initialize_window() {
                 SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Window renderer error.");
                 return 1;
         }
-
+        
         SDL_SetLogPriority(SDL_LOG_CATEGORY_APPLICATION,
                 SDL_LOG_PRIORITY_DEBUG);
 
@@ -34,10 +36,10 @@ int initialize_window() {
 int main() {
         if (initialize_window())  return 1;
         
-        Scene test;
-        test.add_sprite(new DummySprite());
-        set_scene(&test);
-        
+        Scene* test = new Scene();
+        test->add_sprite(new DummySprite());
+        set_scene(test);
+
         Uint64 freq = SDL_GetPerformanceFrequency();
         Uint64 last = SDL_GetPerformanceCounter();
         while (!game_should_close()) {
@@ -56,6 +58,8 @@ int main() {
                 get_scene()->render();
                 SDL_RenderPresent(get_renderer());
         }
+
+        delete get_scene();
 
         SDL_DestroyRenderer(get_renderer());
         SDL_DestroyWindow(get_window());
