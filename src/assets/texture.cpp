@@ -16,13 +16,18 @@ struct texture_slot {
 std::vector<texture_slot> texture_slots;
 
 void free_slot(int index) {
-        char tmp[128] = { 0 };
-        strcpy(tmp, texture_slots[index].path);
+        char tmp[1024] = { 0 };
+        strncpy(tmp, texture_slots[index].path, 1023);
+        tmp[1023] = 0;
+
         free((void*) texture_slots[index].path);
         SDL_DestroyTexture(texture_slots[index].texture);
         texture_slots.erase(texture_slots.begin() + index);
         
-        SDL_LogInfo(SDL_LOG_CATEGORY_APPLICATION, "Texture successfully freed: %s", tmp);
+        SDL_LogInfo(
+                SDL_LOG_CATEGORY_APPLICATION,
+                "Texture successfully freed: %s", tmp
+        );
 }
 
 SDL_Texture* use_texture(const char* path) {
@@ -38,10 +43,12 @@ SDL_Texture* use_texture(const char* path) {
         }
 
         struct texture_slot slot = {
-                (const char*) malloc(sizeof(char) * strlen(path)),
+                (const char*) calloc(sizeof(char) * strlen(path) + 1, 0),
                 IMG_LoadTexture(get_renderer(), path),
                 1
         };
+
+        strcpy((char*) slot.path, path);
 
         texture_slots.push_back(slot);
         SDL_LogInfo(
