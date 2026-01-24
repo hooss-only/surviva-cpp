@@ -1,6 +1,6 @@
 #include "dummy_sprite.hpp"
 
-#include "../game_status.h"
+#include "../game_status.hpp"
 #include "../assets/texture.hpp"
 
 DummySprite::DummySprite() : Sprite() {

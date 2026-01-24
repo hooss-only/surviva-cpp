@@ -1,6 +1,6 @@
 #include "texture.hpp"
 
-#include "../game_status.h"
+#include "../game_status.hpp"
 
 #include <SDL3_image/SDL_image.h>
 #include <vector>

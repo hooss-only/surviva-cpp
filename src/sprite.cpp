@@ -1,8 +1,14 @@
 #include "sprite.hpp"
 
 Sprite::Sprite() {
-        position = { 0 };
+        this->position = { 0 };
+        this->should_delete = false;
 }
 
-Sprite::~Sprite() {
+bool Sprite::get_should_delete() {
+        return this->should_delete;
+}
+
+void Sprite::set_should_delete(bool value) {
+        this->should_delete = value;
 }

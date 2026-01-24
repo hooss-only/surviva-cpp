@@ -1,6 +1,7 @@
 #include <SDL3/SDL.h>
-#include "game_status.h"
+#include "game_status.hpp"
 #include "sprites/dummy_sprite.hpp"
+#include "scene.hpp"
 
 int initialize_window() {
         if (!SDL_Init(SDL_INIT_VIDEO)) {
@@ -32,8 +33,10 @@ int initialize_window() {
 
 int main() {
         if (initialize_window())  return 1;
-
-        DummySprite sprite;
+        
+        Scene test;
+        test.add_sprite(new DummySprite());
+        set_scene(&test);
         
         Uint64 freq = SDL_GetPerformanceFrequency();
         Uint64 last = SDL_GetPerformanceCounter();
@@ -46,11 +49,11 @@ int main() {
                 while (SDL_PollEvent(&event)) {
                         if (event.type == SDL_EVENT_QUIT) set_game_should_close(true);
                 }
-                
-                sprite.update(dt);
 
+                get_scene()->update(dt);
+                
                 SDL_RenderClear(get_renderer());
-                sprite.render();
+                get_scene()->render();
                 SDL_RenderPresent(get_renderer());
         }
 

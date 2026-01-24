@@ -1,7 +1,8 @@
 target_sources(surviva PRIVATE
   main.cpp
-  game_status.c
+  game_status.cpp
   sprite.cpp
+  scene.cpp
 )
 
 add_subdirectory(assets)
