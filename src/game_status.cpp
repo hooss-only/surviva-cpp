@@ -2,7 +2,6 @@
 
 game_status_t game_status = { 0 };
 
-
 void set_window(SDL_Window* window) {
         game_status.window = window;
 }
@@ -18,7 +17,6 @@ void set_renderer(SDL_Renderer* renderer) {
 SDL_Renderer* get_renderer() {
         return game_status.renderer;
 }
-
 
 void set_scene(Scene* scene) {
         game_status.current_scene = scene;
