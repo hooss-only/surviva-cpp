@@ -4,11 +4,9 @@
 
 #include <SDL3_image/SDL_image.h>
 #include <vector>
-#include <cstring>
-#include <cstdlib>
 
 struct texture_slot {
-        const char* path;
+        std::string path;
         SDL_Texture* texture;
         unsigned int usage_amount;
 };
@@ -16,44 +14,49 @@ struct texture_slot {
 std::vector<texture_slot> texture_slots;
 
 void free_slot(int index) {
-        char tmp[1024] = { 0 };
-        strncpy(tmp, texture_slots[index].path, 1023);
-        tmp[1023] = 0;
+        std::string tmp = texture_slots[index].path;
 
-        free((void*) texture_slots[index].path);
         SDL_DestroyTexture(texture_slots[index].texture);
         texture_slots.erase(texture_slots.begin() + index);
         
         SDL_LogInfo(
                 SDL_LOG_CATEGORY_APPLICATION,
-                "Texture successfully freed: %s", tmp
+                "Texture successfully freed: %s", tmp.c_str()
         );
 }
 
-SDL_Texture* use_texture(const char* path) {
+SDL_Texture* use_texture(const std::string path) {
         for (texture_slot& slot: texture_slots) {
-                if (!strcmp(path, slot.path)) {
+                if (path == slot.path) {
                         slot.usage_amount++;
                         SDL_LogInfo(
                                 SDL_LOG_CATEGORY_APPLICATION, 
-                                "Texture successfully assigned: %s", path
+                                "Texture successfully assigned: %s", path.c_str()
                         );
                         return slot.texture;
                 }
         }
 
         struct texture_slot slot = {
-                (const char*) calloc(sizeof(char) * strlen(path) + 1, 0),
-                IMG_LoadTexture(get_renderer(), path),
+                path,
+                IMG_LoadTexture(get_renderer(), path.c_str()),
                 1
         };
 
-        strcpy((char*) slot.path, path);
+        if (!slot.texture) {
+                SDL_LogError(
+                        SDL_LOG_CATEGORY_APPLICATION,
+                        "Texture is null!"
+                );
+                return NULL;
+        }
+        
+        slot.path = path;
 
         texture_slots.push_back(slot);
         SDL_LogInfo(
                 SDL_LOG_CATEGORY_APPLICATION, 
-                "Texture successfully assigned: %s", path
+                "Texture successfully assigned: %s", path.c_str()
         );
         return slot.texture;
 }
