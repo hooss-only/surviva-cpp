@@ -36,10 +36,6 @@ int initialize_window() {
 int main() {
         if (initialize_window())  return 1;
         
-        Scene* test = new Scene();
-        test->add_sprite(new DummySprite());
-        set_scene(test);
-
         Uint64 freq = SDL_GetPerformanceFrequency();
         Uint64 last = SDL_GetPerformanceCounter();
         while (!game_should_close()) {
@@ -51,6 +47,8 @@ int main() {
                 while (SDL_PollEvent(&event)) {
                         if (event.type == SDL_EVENT_QUIT) set_game_should_close(true);
                 }
+
+                if (!get_scene()) continue;
 
                 get_scene()->update(dt);
                 
