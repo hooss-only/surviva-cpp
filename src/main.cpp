@@ -2,7 +2,6 @@
 #include <SDL3_image/SDL_image.h>
 
 #include "game_status.hpp"
-#include "sprites/dummy_sprite.hpp"
 #include "scene.hpp"
 
 int initialize_window() {
