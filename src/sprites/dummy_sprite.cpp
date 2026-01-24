@@ -1,15 +1,14 @@
 #include "dummy_sprite.hpp"
 
-#include <SDL3_image/SDL_image.h>
-
 #include "../game_status.h"
+#include "../assets/texture.hpp"
 
 DummySprite::DummySprite() : Sprite() {
-        this->texture = IMG_LoadTexture(get_renderer(), "assets/apple.png");
+        this->texture = use_texture("assets/apple.png");
 }
 
 DummySprite::~DummySprite() {
-        SDL_DestroyTexture(this->texture);
+        unuse_texture(this->texture);
 }
 
 void DummySprite::update(double dt) {

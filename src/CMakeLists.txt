@@ -4,4 +4,5 @@ target_sources(surviva PRIVATE
   sprite.cpp
 )
 
+add_subdirectory(assets)
 add_subdirectory(sprites)
