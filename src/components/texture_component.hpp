@@ -11,5 +11,4 @@ class TextureComponent {
 
         private:
                 SDL_Texture* texture;
-                SDL_FRect dst;
 };
