@@ -19,4 +19,5 @@ class Scene {
 
         private:
                 void remove_dead_sprites();
+                void process_hovering();
 };
