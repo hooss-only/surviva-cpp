@@ -2,6 +2,7 @@
 #include <SDL3_image/SDL_image.h>
 
 #include "game_status.hpp"
+#include "assets/texture.hpp"
 #include "scenes/test_scene.hpp"
 
 int initialize_window() {
@@ -61,7 +62,8 @@ int main() {
         }
 
         delete get_scene();
-
+        
+        unload_all_texture();
         SDL_DestroyRenderer(get_renderer());
         SDL_DestroyWindow(get_window());
         SDL_Quit();

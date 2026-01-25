@@ -63,6 +63,16 @@ SDL_Texture* use_texture(const std::string path) {
         return slot.texture;
 }
 
+void unload_all_texture() {
+        SDL_LogWarn(
+                SDL_LOG_CATEGORY_APPLICATION,
+                "Your program is trying to unload all textures regardless there is remained users!"
+        );
+        for (int i=0; i<texture_slots.size(); i++) {
+                free_slot(0);
+        }
+}
+
 void unuse_texture(SDL_Texture* texture) {
         int index = 0;
         for (int i=0; i<texture_slots.size(); i++) {
