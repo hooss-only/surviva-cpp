@@ -13,6 +13,15 @@ Scene::~Scene() {
         sprites.clear();
 }
 
+void Scene::handle_event(SDL_Event& event) {
+        if (event.type == SDL_EVENT_MOUSE_BUTTON_UP) {
+                Clickable* hovering = dynamic_cast<Clickable*>(get_cursor_hovering());
+                if (hovering) {
+                        hovering->on_click(event.button.button);
+                }
+        }
+}
+
 void Scene::update(double dt) {
         this->remove_dead_sprites();
         process_hovering();

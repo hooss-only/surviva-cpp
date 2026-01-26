@@ -50,6 +50,8 @@ int main() {
                 SDL_Event event;
                 while (SDL_PollEvent(&event)) {
                         if (event.type == SDL_EVENT_QUIT) set_game_should_close(true);
+
+                        get_scene()->handle_event(event);
                 }
 
                 if (!get_scene()) continue;

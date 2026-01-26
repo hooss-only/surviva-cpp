@@ -9,4 +9,5 @@ class Dummy : public Entity, public Clickable {
                 ~Dummy() = default;
 
                 void on_hover() override;
+                void on_click(Uint8 button) override;
 };

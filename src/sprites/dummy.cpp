@@ -8,5 +8,10 @@ Dummy::Dummy() : Entity(), Clickable() {
 }
 
 void Dummy::on_hover() {
-        SDL_LogDebug(SDL_LOG_CATEGORY_APPLICATION, "You're hovering a DUMMY!");
+}
+
+void Dummy::on_click(Uint8 button) {
+        if (button == SDL_BUTTON_LEFT) {
+                SDL_LogDebug(SDL_LOG_CATEGORY_APPLICATION, "You left-clicked DUMMY!!");
+        }
 }

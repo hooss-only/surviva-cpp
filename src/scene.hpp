@@ -8,7 +8,8 @@ class Scene {
         public:
                 Scene();
                 virtual ~Scene();
-
+                
+                virtual void handle_event(SDL_Event& event);
                 virtual void update(double dt);
                 virtual void render();
 
