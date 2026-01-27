@@ -3,7 +3,7 @@
 #include "../sprites/player.hpp"
 #include "../sprites/dummy.hpp"
 
-TestScene::TestScene() {
+TestScene::TestScene() : TopView() {
         this->add_sprite(new Player());
 
         Dummy* d = new Dummy();
