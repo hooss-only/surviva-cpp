@@ -8,5 +8,5 @@ Entity::Entity() : Sprite() {
         this->max_hp = 100;
         this->hp = max_hp;
 
-        this->speed = 100;
+        this->speed = 200;
 }
