@@ -39,6 +39,14 @@ int get_sprite_scale() {
         return game_status.scale;
 }
 
+void set_debug_mode(bool debug) {
+        game_status.debug = debug;
+}
+
+bool get_debug_mode() {
+        return game_status.debug;
+}
+
 void set_game_should_close(bool should_close) {
         game_status.should_close = should_close;
 }

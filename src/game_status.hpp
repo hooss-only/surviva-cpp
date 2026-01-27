@@ -13,6 +13,7 @@ typedef struct {
 
         int scale;
 
+        bool debug;
         bool should_close;
 } game_status_t;
 
@@ -28,6 +29,9 @@ Scene* get_scene();
 
 void set_sprite_scale(int scale);
 int get_sprite_scale();
+
+void set_debug_mode(bool debug);
+bool get_debug_mode();
 
 void set_game_should_close(bool should_close);
 bool game_should_close();
