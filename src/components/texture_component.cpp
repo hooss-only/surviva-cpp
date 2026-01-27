@@ -9,6 +9,18 @@ TextureComponent::~TextureComponent() {
 
 void TextureComponent::set_texture(SDL_Texture* texture) {
         this->texture = texture;
+
+        this->src = {
+                0, 0,
+                (float) this->texture->w, 
+                (float) this->texture->h
+        };
+}
+
+void TextureComponent::set_src(SDL_FRect src) {
+        this->src = {
+                src.x, src.y, src.w, src.h
+        };
 }
 
 void TextureComponent::render(SDL_FPoint position) {
@@ -22,7 +34,7 @@ void TextureComponent::render(SDL_FPoint position) {
         SDL_RenderTexture(
                 get_renderer(),
                 this->texture,
-                NULL,
+                &src,
                 &dst
         );
 }
