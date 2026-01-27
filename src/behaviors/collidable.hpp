@@ -7,7 +7,7 @@ class Collidable {
                 Collidable(SDL_FRect box, const SDL_FPoint* follow);
                 ~Collidable() = default;
 
-                virtual void on_collide() = 0;
+                virtual void on_collide();
 
                 bool check_collision(Collidable* other);
                 SDL_FRect get_collide_box();

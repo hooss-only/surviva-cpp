@@ -12,6 +12,9 @@ Collidable::Collidable(SDL_FRect box, const SDL_FPoint* follow) {
         this->follow = follow;
 }
 
+void Collidable::on_collide() {
+}
+
 SDL_FRect Collidable::get_collide_box() {
         return SDL_FRect {
                 this->follow->x + this->box.x,
