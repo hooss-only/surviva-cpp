@@ -58,6 +58,7 @@ int main() {
 
                 get_scene()->update(dt);
 
+                SDL_SetRenderDrawColor(get_renderer(), 0, 0, 0, 255);
                 SDL_RenderClear(get_renderer());
                 get_scene()->render();
                 SDL_RenderPresent(get_renderer());

@@ -42,7 +42,6 @@ void TopView::render_debug() {
                         SDL_SetRenderDrawColor(get_renderer(), 255, 0, 0, 255);
                         SDL_FRect rect = collidable->get_collide_box();
                         SDL_RenderRect(get_renderer(), &rect);;
-                        SDL_SetRenderDrawColor(get_renderer(), 0, 0, 0, 255);
                 }
         }
 }
