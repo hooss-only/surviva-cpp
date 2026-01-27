@@ -4,16 +4,15 @@
 
 class Clickable {
         public:
-                Clickable();
+                Clickable(SDL_FRect box, const SDL_FPoint* follow);
                 ~Clickable() = default;
 
-                void set_click_box(SDL_FRect box);
-                
                 virtual void on_hover();
                 virtual void on_click(Uint8 button);
 
                 SDL_FRect get_click_box();
 
         private:
-                SDL_FRect click_box;
+                SDL_FRect box;
+                const SDL_FPoint* follow;
 };
