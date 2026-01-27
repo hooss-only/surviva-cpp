@@ -1,6 +1,7 @@
 #include "topview.hpp"
 
 #include "../behaviors/collidable.hpp"
+#include "../behaviors/clickable.hpp"
 #include "../game_status.hpp"
 #include <algorithm>
 
@@ -41,6 +42,12 @@ void TopView::render_debug() {
                 if (collidable) {
                         SDL_SetRenderDrawColor(get_renderer(), 255, 0, 0, 255);
                         SDL_FRect rect = collidable->get_collide_box();
+                        SDL_RenderRect(get_renderer(), &rect);;
+                }
+                Clickable* clickable = dynamic_cast<Clickable*>(sprite);
+                if (clickable) {
+                        SDL_SetRenderDrawColor(get_renderer(), 0, 255, 0, 255);
+                        SDL_FRect rect = clickable->get_click_box();
                         SDL_RenderRect(get_renderer(), &rect);;
                 }
         }
