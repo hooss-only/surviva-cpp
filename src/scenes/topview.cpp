@@ -4,12 +4,6 @@
 #include "../game_status.hpp"
 #include <algorithm>
 
-TopView::TopView() {
-}
-
-TopView::~TopView() {
-}
-
 void TopView::update(double dt) {
         this->check_collision();
         this->order_sprites();

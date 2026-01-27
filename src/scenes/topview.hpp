@@ -4,8 +4,8 @@
 
 class TopView : public Scene {
         public:
-                TopView();
-                virtual ~TopView();
+                TopView() = default;
+                virtual ~TopView() = default;
 
                 void update(double dt) override;
                 void render() override;
