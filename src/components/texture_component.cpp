@@ -27,14 +27,14 @@ void TextureComponent::render(SDL_FPoint position) {
         SDL_FRect dst = {
                 position.x,
                 position.y,
-                (float) this->texture->w * get_sprite_scale(),
-                (float) this->texture->h * get_sprite_scale(),
+                (float) this->src.w * get_sprite_scale(),
+                (float) this->src.h * get_sprite_scale(),
         };
 
         SDL_RenderTexture(
                 get_renderer(),
                 this->texture,
-                &src,
+                &this->src,
                 &dst
         );
 }
