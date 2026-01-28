@@ -27,11 +27,16 @@ void Sprite::set_should_delete(bool value) {
         this->should_delete = value;
 }
 
-SDL_FPoint Sprite::get_position() {
-        return SDL_FPoint {
-                this->position.x - this->offset.x * get_sprite_scale(),
-                this->position.y - this->offset.y * get_sprite_scale()
+SDL_FPoint Sprite::get_offset() {
+        SDL_FPoint offset = {
+                this->offset.x * get_sprite_scale(),
+                this->offset.y * get_sprite_scale(),
         };
+        return offset;
+}
+
+SDL_FPoint& Sprite::get_position() {
+        return this->position;
 }
 
 void Sprite::set_position(float x, float y) {

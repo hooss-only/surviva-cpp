@@ -50,6 +50,10 @@ void TopView::render_debug() {
                         SDL_FRect rect = clickable->get_click_box();
                         SDL_RenderRect(get_renderer(), &rect);;
                 }
+
+                SDL_FPoint p = sprite->get_position();
+                SDL_SetRenderDrawColor(get_renderer(), 255, 255, 255, 255);
+                SDL_RenderPoint(get_renderer(), p.x, p.y);
         }
 }
 
