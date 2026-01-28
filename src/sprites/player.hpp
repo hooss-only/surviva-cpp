@@ -12,6 +12,8 @@ class Player : public Entity, public Collidable {
 
                 void on_collide() override;
 
+                const float reach = 100.f;
+
         private:
                 void move(double dt);
                 void animate();

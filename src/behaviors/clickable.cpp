@@ -1,6 +1,7 @@
 #include "clickable.hpp"
 
 #include "../game_status.hpp"
+#include "../math/distance.h"
 
 Clickable::Clickable(SDL_FRect box, const SDL_FPoint* follow) {
         this->box = {
@@ -14,6 +15,14 @@ Clickable::Clickable(SDL_FRect box, const SDL_FPoint* follow) {
 
 void Clickable::on_hover() {}
 void Clickable::on_click(Uint8 button) {}
+
+bool Clickable::is_in_player_reach() {
+        float dist = get_dist(
+                *this->follow,
+                get_player()->get_position()
+        );
+        return dist <= get_player()->reach;
+}
 
 SDL_FRect Clickable::get_click_box() {
         return SDL_FRect {

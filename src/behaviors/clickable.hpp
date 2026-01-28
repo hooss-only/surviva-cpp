@@ -10,6 +10,8 @@ class Clickable {
                 virtual void on_hover();
                 virtual void on_click(Uint8 button);
 
+                bool is_in_player_reach();
+
                 SDL_FRect get_click_box();
 
         private:
