@@ -32,10 +32,14 @@ void TopView::check_collision() {
 
 void TopView::render() {
         Player* player = get_player();
+        
+        int w, h;
+        SDL_GetWindowSize(get_window(), &w, &h);
+
         if (player) {
                 this->camera.pos = {
-                        player->get_position().x - 400,
-                        player->get_position().y - 300
+                        player->get_position().x - w/2.f,
+                        player->get_position().y - h/2.f
                 };
         }
         Scene::render();
