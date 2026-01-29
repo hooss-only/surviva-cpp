@@ -14,7 +14,7 @@ int initialize_window() {
         set_window(SDL_CreateWindow(
                 "Surviva",
                 800, 600,
-                0
+                SDL_WINDOW_RESIZABLE
         ));
         if (!get_window()) {
                 SDL_LogError(SDL_LOG_CATEGORY_APPLICATION, "Window creation error.");
