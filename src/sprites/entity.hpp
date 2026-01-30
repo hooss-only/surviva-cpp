@@ -8,6 +8,8 @@ class Entity : public Sprite {
                 Entity();
                 virtual ~Entity() = default;
 
+                void hurt(int damage);
+
                 Inventory* get_inventory();
 
         protected:

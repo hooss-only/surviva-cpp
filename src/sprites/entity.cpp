@@ -14,3 +14,8 @@ Entity::Entity() : Sprite() {
 Inventory* Entity::get_inventory() {
         return this->inventory.get();
 }
+
+void Entity::hurt(int damage) {
+        this->hp -= damage;
+        if (hp <= 0) this->should_delete = true;
+}
