@@ -7,7 +7,7 @@
 class Inventory {
         public:
                 Inventory(int size);
-                ~Inventory();
+                ~Inventory() = default;
 
                 bool add_item(Item* item);
                 Item* get_item(int index);
