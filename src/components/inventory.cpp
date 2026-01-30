@@ -16,6 +16,10 @@ Item* Inventory::get_item(int index) {
         return this->items[index].get();
 }
 
+Item* Inventory::get_item_on_hand() {
+        return this->items[hand_index].get();
+}
+
 int Inventory::get_size() {
         return this->size;
 }
