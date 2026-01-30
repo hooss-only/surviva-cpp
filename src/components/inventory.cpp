@@ -1,30 +1,25 @@
 #include "inventory.hpp"
 
-Inventory::Inventory(int size) {
-        this->size = size;
-        this->items = new Item*[size];
-        for (int i=0; i<this->size; i++) {
-                items[i] = nullptr;
-        }
+Inventory::Inventory(int size) : items(size) {
 }
 
 Inventory::~Inventory() {
-        for (int i=0; i<this->size; i++) {
-                delete this->items[i];
-        }
-        delete[] this->items;
 }
 
-void Inventory::add_item(Item* item) {
-        for (int i=0; i<this->size; i++)
-                if (!items[i])
-                        items[i] = item;
+bool Inventory::add_item(Item* item) {
+        for (int i=0; i<this->size; i++) {
+                if (!items[i]) {
+                        items[i].reset(item);
+                        return true;
+                }
+        }
+        return false;
 }
 
 Item* Inventory::get_item(int index) {
-        return this->items[index];
+        return this->items[index].get();
 }
 
-Item** Inventory::get_items() {
-        return this->items;
+int Inventory::get_size() {
+        return this->size;
 }

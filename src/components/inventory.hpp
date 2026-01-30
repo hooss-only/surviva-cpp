@@ -2,16 +2,18 @@
 
 #include "../item.hpp"
 
+#include <vector>
+
 class Inventory {
         public:
                 Inventory(int size);
                 ~Inventory();
 
-                void add_item(Item* item);
+                bool add_item(Item* item);
                 Item* get_item(int index);
-                Item** get_items();
+                int get_size();
 
         private:
                 int size;
-                Item** items;
+                std::vector<std::unique_ptr<Item>> items;
 };
