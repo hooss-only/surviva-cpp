@@ -43,7 +43,8 @@ struct Camera& Scene::get_camera() {
 void Scene::remove_dead_sprites() {
         for (auto it = this->sprites.begin(); it != this->sprites.end(); ) {
                 if ((*it)->get_should_delete()) {
-                        it = sprites.erase(it);
+                        delete *it;
+                        it = this->sprites.erase(it);
                 } else {
                         it++;
                 }
