@@ -1,6 +1,8 @@
 #include "inventory.hpp"
 
-Inventory::Inventory(int size) : items(size) { }
+Inventory::Inventory(int size) : items(size) { 
+        this->size = size;
+}
 
 bool Inventory::add_item(Item* item) {
         for (int i=0; i<this->size; i++) {
