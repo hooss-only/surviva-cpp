@@ -4,9 +4,11 @@
 #include "../sprites/player.hpp"
 #include "../sprites/dummy.hpp"
 #include "../sprites/tree.hpp"
+#include "../items/iron_axe.hpp"
 
 TestScene::TestScene() : TopView() {
         set_player(new Player);
+        get_player()->get_inventory()->add_item(new IronAxe());
         this->add_sprite(get_player());
 
         Dummy* d = new Dummy();
