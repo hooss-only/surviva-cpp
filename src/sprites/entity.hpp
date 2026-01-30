@@ -8,6 +8,8 @@ class Entity : public Sprite {
                 Entity();
                 virtual ~Entity() = default;
 
+                Inventory* get_inventory();
+
         protected:
                 SDL_FPoint velocity;
                 int hp, max_hp;

@@ -10,3 +10,7 @@ Entity::Entity() : Sprite() {
 
         this->speed = 200;
 }
+
+Inventory* Entity::get_inventory() {
+        return this->inventory.get();
+}
