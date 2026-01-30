@@ -11,11 +11,15 @@ class Inventory {
                 
                 bool add_item(Item* item);
                 Item* get_item(int index);
+
                 Item* get_item_on_hand();
+                void set_hand_index(int index);
+                int get_hand_index();
+
                 int get_size();
 
         private:
                 int size;
-                int hand_index = 0;
+                int hand_index;
                 std::vector<std::unique_ptr<Item>> items;
 };

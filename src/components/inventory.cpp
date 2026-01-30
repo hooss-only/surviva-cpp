@@ -22,6 +22,14 @@ Item* Inventory::get_item_on_hand() {
         return this->items[hand_index].get();
 }
 
+void Inventory::set_hand_index(int index) {
+        this->hand_index = index;       
+}
+
+int Inventory::get_hand_index() {
+        return this->hand_index;
+}
+
 int Inventory::get_size() {
         return this->size;
 }
