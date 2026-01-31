@@ -11,7 +11,7 @@ class Sprite {
                 virtual ~Sprite() = default;
                 
                 virtual void update(double dt);
-                virtual void render(SDL_FRect* offset);
+                virtual void render();
                 void set_should_delete(bool value);
                 bool get_should_delete();
 

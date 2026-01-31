@@ -11,10 +11,10 @@ Sprite::Sprite() {
 void Sprite::update(double dt) {
 }
 
-void Sprite::render(SDL_FRect* cam_offset) {
+void Sprite::render() {
         SDL_FPoint pos = {
-                this->position.x - get_offset().x - cam_offset->x,
-                this->position.y - get_offset().y - cam_offset->y
+                this->position.x - get_offset().x - get_scene()->get_camera().pos.x,
+                this->position.y - get_offset().y - get_scene()->get_camera().pos.y
         };
         if (texture) texture->render(pos);
 }
