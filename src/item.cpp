@@ -13,3 +13,11 @@ std::string& Item::get_description() {
 item_type_t Item::get_item_type() {
         return this->item_type;
 }
+
+void Item::render_on_body(SDL_FPoint position) {
+        if (!this->texture) return;
+        
+        position.y -= this->texture->get_scale().y;
+        position.x += 10;
+        this->texture->render(position);
+}

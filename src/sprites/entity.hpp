@@ -10,6 +10,8 @@ class Entity : public Sprite {
 
                 void hurt(int damage);
 
+                void render() override;
+
                 Inventory* get_inventory();
 
         protected:

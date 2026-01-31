@@ -28,7 +28,7 @@ void Scene::update(double dt) {
 
 void Scene::render() {
         for (Sprite* sprite: this->sprites) {
-                sprite->render(&camera.pos);
+                sprite->render();
         }
 }
 

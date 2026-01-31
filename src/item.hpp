@@ -2,6 +2,8 @@
 
 #include <string>
 
+#include "components/texture_component.hpp"
+
 typedef enum {
         ITEM_TYPE_AXE,
 } item_type_t;
@@ -17,8 +19,11 @@ class Item {
                 std::string& get_description();
                 item_type_t get_item_type();
 
+                void render_on_body(SDL_FPoint body_position);
+
         protected:
                 std::string name;
                 std::string description;
                 item_type_t item_type;
+                std::unique_ptr<TextureComponent> texture;
 };
