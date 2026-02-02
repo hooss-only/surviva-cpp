@@ -4,11 +4,11 @@
 #include "../sprites/player.hpp"
 #include "../sprites/dummy.hpp"
 #include "../sprites/tree.hpp"
+#include "../sprites/item_entity.hpp"
 #include "../items/iron_axe.hpp"
 
 TestScene::TestScene() : TopView() {
         set_player(new Player);
-        get_player()->get_inventory()->add_item(new IronAxe());
         this->add_sprite(get_player());
 
         Dummy* d = new Dummy();
@@ -18,4 +18,8 @@ TestScene::TestScene() : TopView() {
         Tree* t = new Tree();
         t->set_position(200, 100);
         this->add_sprite(t);
+
+        ItemEntity* i = new ItemEntity(new IronAxe());
+        i->set_position(300, 100);
+        this->add_sprite(i);
 }

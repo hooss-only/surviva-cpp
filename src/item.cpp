@@ -14,6 +14,10 @@ item_type_t Item::get_item_type() {
         return this->item_type;
 }
 
+TextureComponent* Item::get_texture() {
+        return this->texture.get();
+}
+
 void Item::render_on_body(SDL_FPoint position) {
         if (!this->texture) return;
         

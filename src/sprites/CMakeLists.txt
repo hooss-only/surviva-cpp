@@ -3,4 +3,5 @@ target_sources(surviva PRIVATE
   player.cpp
   dummy.cpp
   tree.cpp
+  item_entity.cpp
 )

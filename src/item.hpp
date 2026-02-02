@@ -19,6 +19,8 @@ class Item {
                 std::string& get_description();
                 item_type_t get_item_type();
 
+                TextureComponent* get_texture();
+
                 void render_on_body(SDL_FPoint body_position);
 
         protected:
