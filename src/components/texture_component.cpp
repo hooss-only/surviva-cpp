@@ -23,7 +23,7 @@ void TextureComponent::set_src(SDL_FRect src) {
         };
 }
 
-SDL_FPoint TextureComponent::get_scale() {
+SDL_FPoint TextureComponent::get_size() {
         return SDL_FPoint {
                 (float) this->src.w * get_sprite_scale(),
                 (float) this->src.h * get_sprite_scale(),
@@ -34,8 +34,8 @@ void TextureComponent::render(SDL_FPoint position) {
         SDL_FRect dst = {
                 position.x,
                 position.y,
-                (float) this->src.w * get_sprite_scale(),
-                (float) this->src.h * get_sprite_scale(),
+                (float) this->src.w * get_sprite_scale() * this->scale,
+                (float) this->src.h * get_sprite_scale() * this->scale,
         };
 
         SDL_RenderTexture(

@@ -54,5 +54,5 @@ void Sprite::set_position(float x, float y) {
 }
 
 SDL_FPoint Sprite::get_scale() {
-        return this->texture->get_scale();
+        return this->texture->get_size();
 }

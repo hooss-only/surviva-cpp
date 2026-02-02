@@ -21,7 +21,7 @@ TextureComponent* Item::get_texture() {
 void Item::render_on_body(SDL_FPoint position) {
         if (!this->texture) return;
         
-        position.y -= this->texture->get_scale().y;
+        position.y -= this->texture->get_size().y;
         position.x += 10;
         this->texture->render(position);
 }
