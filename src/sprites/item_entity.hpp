@@ -16,5 +16,4 @@ class ItemEntity : public Entity, public Collidable {
 
         private:
                 Item* item;
-                float velocity;
 };
