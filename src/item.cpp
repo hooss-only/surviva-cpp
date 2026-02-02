@@ -23,5 +23,5 @@ void Item::render_on_body(SDL_FPoint position) {
         
         position.y -= this->texture->get_size().y;
         position.x += 10;
-        this->texture->render(position);
+        this->texture->render(position, {0, 0});
 }

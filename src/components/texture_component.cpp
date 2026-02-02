@@ -30,7 +30,7 @@ SDL_FPoint TextureComponent::get_size() {
         };
 }
 
-void TextureComponent::render(SDL_FPoint position) {
+void TextureComponent::render(SDL_FPoint position, SDL_FPoint offset) {
         SDL_FRect dst = {
                 position.x,
                 position.y,
@@ -38,10 +38,21 @@ void TextureComponent::render(SDL_FPoint position) {
                 (float) this->src.h * get_sprite_scale() * this->scale,
         };
 
-        SDL_RenderTexture(
+        SDL_RenderTextureRotated(
                 get_renderer(),
-                this->texture,
-                &this->src,
-                &dst
+                this->texture, 
+                &this->src, 
+                &dst, 
+                0.f, 
+                &offset,
+                SDL_FLIP_NONE
         );
+}
+
+void TextureComponent::set_scale(float scale) {
+        this->scale = scale;
+}
+
+float TextureComponent::get_scale() {
+        return this->scale;
 }

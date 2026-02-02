@@ -8,9 +8,12 @@ class TextureComponent {
 
                 void set_texture(SDL_Texture* texture);
                 void set_src(SDL_FRect src);
-                void render(SDL_FPoint position);
+                void render(SDL_FPoint position, SDL_FPoint offset);
                 
                 SDL_FPoint get_size();
+
+                float get_scale();
+                void set_scale(float scale);
 
         private:
                 SDL_Texture* texture;

@@ -16,7 +16,7 @@ void Sprite::render() {
                 this->position.x - get_offset().x - get_scene()->get_camera().pos.x,
                 this->position.y - get_offset().y - get_scene()->get_camera().pos.y
         };
-        if (texture) texture->render(pos);
+        if (texture) texture->render(pos, get_offset());
 }
 
 bool Sprite::get_should_delete() {
