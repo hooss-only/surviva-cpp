@@ -29,7 +29,6 @@ void Tree::on_click(Uint8 button) {
                 float d = (float) this->max_hp / SHEET_AMOUNT;
 
                 for (int i=0; i<SHEET_AMOUNT; i++) {
-                        SDL_LogDebug(SDL_LOG_CATEGORY_TEST, "%d %f", hp, d*i);
                         if ((float) this->hp > d * i) {
                                 x = (SHEET_AMOUNT - i - 1) * SPRITE_WIDTH;
                         }
