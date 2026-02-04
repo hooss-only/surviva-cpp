@@ -18,7 +18,7 @@ void ItemEntity::render() {
         };
         if (this->item) {
                 TextureComponent* texture = this->item->get_texture();
-                texture->render(pos, get_offset());
+                texture->render(pos, this->get_offset());
         }
 }
 
