@@ -5,6 +5,7 @@
 #include "components/texture_component.hpp"
 
 typedef enum {
+        ITEM_TYPE_MATERIAL,
         ITEM_TYPE_AXE,
 } item_type_t;
 
