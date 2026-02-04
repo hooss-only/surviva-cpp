@@ -1,5 +1,7 @@
 #include "tree.hpp"
 
+#include "../sprites/item_entity.hpp"
+#include "../items/wood.hpp"
 #include "../assets/texture.hpp"
 #include "../game_status.hpp"
 
@@ -17,6 +19,12 @@ Tree::Tree() :
         this->texture->set_src({ 0, 0, SPRITE_WIDTH, SPRITE_HEIGHT });
 }
 
+Tree::~Tree() {
+        ItemEntity* w = new ItemEntity(new Wood());
+        w->set_position(this->get_position().x, this->get_position().y);
+        get_scene()->add_sprite(w);
+}
+
 void Tree::on_click(Uint8 button) {
         if (button == SDL_BUTTON_LEFT) {
                 Item* item = get_player()->get_inventory()->get_item_on_hand();
@@ -25,15 +33,15 @@ void Tree::on_click(Uint8 button) {
                 
                 this->hurt(10);
 
-                float x = 0;
-                float d = (float) this->max_hp / SHEET_AMOUNT;
+                float x = 0, d = (float) this->max_hp / SHEET_AMOUNT;
+                int i = 0;
 
-                for (int i=0; i<SHEET_AMOUNT; i++) {
+                for (i=0; i<SHEET_AMOUNT; i++) {
                         if ((float) this->hp > d * i) {
                                 x = (SHEET_AMOUNT - i - 1) * SPRITE_WIDTH;
                         }
                 }
-
+                
                 this->texture->set_src({ x, 0, SPRITE_WIDTH, SPRITE_HEIGHT });
         }
 }

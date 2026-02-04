@@ -7,7 +7,7 @@
 class Tree : public Entity, public Clickable, public Collidable {
         public:
                 Tree();
-                ~Tree() = default;
+                ~Tree();
 
                 void on_click(Uint8 button) override;
 };
