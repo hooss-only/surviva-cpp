@@ -1,8 +1,8 @@
 #pragma once
 
-#include "../item.hpp"
+#include "tool.hpp"
 
-class IronAxe : public Item {
+class IronAxe : public Tool {
         public:
                 IronAxe();
                 ~IronAxe() = default;
