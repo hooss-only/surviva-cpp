@@ -2,6 +2,7 @@
 
 #include "../sprites/item_entity.hpp"
 #include "../items/wood.hpp"
+#include "../items/tool.hpp"
 #include "../assets/texture.hpp"
 #include "../game_status.hpp"
 
@@ -28,10 +29,11 @@ Tree::~Tree() {
 void Tree::on_click(Uint8 button) {
         if (button == SDL_BUTTON_LEFT) {
                 Item* item = get_player()->get_inventory()->get_item_on_hand();
-                if (!item) return;
-                if (item->get_item_type() != ITEM_TYPE_AXE) return;
-                
-                this->hurt(10);
+                Tool* tool = dynamic_cast<Tool*>(item);
+                if (!tool) return;
+                if (tool->get_item_type() != ITEM_TYPE_AXE) return;
+
+                this->hurt(tool->get_damage());
 
                 float x = 0, d = (float) this->max_hp / SHEET_AMOUNT;
                 int i = 0;
