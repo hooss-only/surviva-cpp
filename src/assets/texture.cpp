@@ -74,6 +74,8 @@ void unload_all_texture() {
 }
 
 void unuse_texture(SDL_Texture* texture) {
+        if (!texture) return;
+
         int index = 0;
         for (int i=0; i<texture_slots.size(); i++) {
                 if (texture == texture_slots[i].texture) {
