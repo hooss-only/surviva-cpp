@@ -11,7 +11,7 @@ typedef enum {
 
 class Item {
         public:
-                Item() = default;
+                Item(std::string name, std::string description, item_type_t item_type);
                 virtual ~Item() = default;
 
                 virtual void on_use();

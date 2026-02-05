@@ -1,5 +1,11 @@
 #include "item.hpp"
 
+Item::Item(std::string name, std::string description, item_type_t item_type) {
+        this->name = name;
+        this->description = description;
+        this->item_type = item_type;
+}
+
 void Item::on_use() {}
 
 std::string& Item::get_name() {
