@@ -7,7 +7,7 @@
 class Inventory {
         public:
                 Inventory(int size);
-                ~Inventory() = default;
+                ~Inventory();
                 
                 bool add_item(Item* item);
                 Item* get_item(int index);
@@ -21,5 +21,5 @@ class Inventory {
         private:
                 int size;
                 int hand_index;
-                std::vector<std::unique_ptr<Item>> items;
+                std::vector<Item*> items;
 };

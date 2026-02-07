@@ -7,7 +7,7 @@
 class ItemEntity : public Entity, public Collidable {
         public:
                 ItemEntity(Item* item);
-                ~ItemEntity() = default;
+                ~ItemEntity();
 
                 void render() override;
                 void update(double dt) override;

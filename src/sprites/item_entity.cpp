@@ -11,6 +11,10 @@ ItemEntity::ItemEntity(Item* item)
         this->item->get_texture()->set_scale(0);
 }
 
+ItemEntity::~ItemEntity() {
+        if (this->item) delete item;
+}
+
 void ItemEntity::render() {
         SDL_FPoint pos = {
                 this->position.x - get_offset().x - get_scene()->get_camera().pos.x,
@@ -36,4 +40,5 @@ void ItemEntity::on_collide() {
         this->item->get_texture()->set_scale(1);
         get_player()->get_inventory()->add_item(this->item);
         this->set_should_delete(true);
+        this->item = nullptr;
 }

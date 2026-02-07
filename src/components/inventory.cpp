@@ -2,12 +2,22 @@
 
 Inventory::Inventory(int size) : items(size) { 
         this->size = size;
+        for (int i=0; i<size; i++) {
+                items[i] = nullptr;
+        }
+}
+
+Inventory::~Inventory() {
+        for (int i=0; i<size; i++) {
+                if (items[i])
+                        delete items[i];
+        }
 }
 
 bool Inventory::add_item(Item* item) {
         for (int i=0; i<this->size; i++) {
                 if (!items[i]) {
-                        items[i].reset(item);
+                        items[i] = item;
                         return true;
                 }
         }
@@ -15,11 +25,11 @@ bool Inventory::add_item(Item* item) {
 }
 
 Item* Inventory::get_item(int index) {
-        return this->items[index].get();
+        return this->items[index];
 }
 
 Item* Inventory::get_item_on_hand() {
-        return this->items[hand_index].get();
+        return this->items[hand_index];
 }
 
 void Inventory::set_hand_index(int index) {
